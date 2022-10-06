@@ -37,4 +37,10 @@ public class ManagerRestController {
                                     @RequestParam String course_class){
         mService.addCourses(new Course(course_name, course_teacher_name, course_class));
     }
+
+    @PostMapping("/courseToStudent")
+    public void managerAddCourseToStudent(@RequestParam int student_id,
+                                          @RequestParam int course_id) {
+        mService.addCourseToStudent(student_id, course_id);
+    }
 }

@@ -8,6 +8,10 @@ public class Course {
     private int course_id;
     private static int course_id_counter = 1;
 
+    public Course() {
+
+    }
+
     public Course(String p_course_name, String p_course_teacher, String p_course_class) {
         setCourse_id(Course.course_id_counter++);
         setCourse_name(p_course_name);
