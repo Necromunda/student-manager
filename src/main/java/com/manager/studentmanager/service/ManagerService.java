@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,6 @@ public class ManagerService {
     private List<Course> courses = new ArrayList<>();
 
     public void addStudents(Student p_student) {
-
         this.students.add(p_student);
         mFileService.writeFileStudents(this.students);
     }
