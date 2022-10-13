@@ -21,7 +21,8 @@ public class Student {
         setStudent_lname(p_student_lname);
         setStudent_grade(p_student_grade);
     }
-    
+
+    // Setters and getters for student attributes
     public String getStudent_fname() {
         return student_fname;
     }
@@ -43,7 +44,7 @@ public class Student {
     }
 
     public void setStudent_grade(int student_grade) {
-        this.student_grade = student_grade < 1 ? 1 : (student_grade > 5 ? 5 : student_grade);
+        this.student_grade = student_grade < 1 ? 1 : (Math.min(student_grade, 5));
     }
 
     public int getStudent_id() {
@@ -52,6 +53,10 @@ public class Student {
 
     public void setStudent_id(int student_id) {
         this.student_id = student_id;
+    }
+
+    public static void setStudent_id_counter(int student_id_counter) {
+        Student.student_id_counter = student_id_counter;
     }
 
     public List<Course> getStudent_courses() {

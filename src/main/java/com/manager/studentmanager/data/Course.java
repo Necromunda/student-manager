@@ -19,6 +19,7 @@ public class Course {
         setCourse_class(p_course_class);
     }
 
+    // Setters and getters for course attributes
     public String getCourse_name() {
         return course_name;
     }
