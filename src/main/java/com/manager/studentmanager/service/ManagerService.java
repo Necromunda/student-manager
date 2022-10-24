@@ -3,7 +3,6 @@ package com.manager.studentmanager.service;
 import com.manager.studentmanager.data.Course;
 import com.manager.studentmanager.data.Student;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

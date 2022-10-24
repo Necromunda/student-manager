@@ -120,7 +120,17 @@ public class ManagerFileService {
 
         // Read students.json if it exists or make a new JSONArray
         JSONArray studentArr = studentFile.exists() ? readFile(studentFile) : new JSONArray();
-        student.setStudent_id(studentArr.length() + 1);
+        // Get the id from the last object of the array. Add +1 to it and set it as the students id
+        if (studentArr.length() > 0) {
+            try {
+                JSONObject obj = (JSONObject) studentArr.get(studentArr.length() - 1);
+                student.setStudent_id(obj.optInt("Id") + 1);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            student.setStudent_id(studentArr.length() + 1);
+        }
 
         // Convert student object to a JSON object and add it to JSONArray
         JSONObject studentObj = new JSONObject();
@@ -153,7 +163,17 @@ public class ManagerFileService {
 
         // Read courses.json if it exists or make a new JSONArray
         JSONArray courseArr = courseFile.exists() ? readFile(courseFile) : new JSONArray();
-        course.setCourse_id(courseArr.length() + 1);
+        // Get the id from the last object of the array. Add +1 to it and set it as the students id
+        if (courseArr.length() > 0) {
+            try {
+                JSONObject obj = (JSONObject) courseArr.get(courseArr.length() - 1);
+                course.setCourse_id(obj.optInt("Id") + 1);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        } else {
+            course.setCourse_id(courseArr.length() + 1);
+        }
 
         // Convert course object to a JSON object and add it to JSONArray
         JSONObject courseObj = new JSONObject();
