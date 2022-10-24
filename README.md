@@ -1,7 +1,5 @@
 # Project was made with IntelliJ by Johannes Rantapää
 
----
-
 ## Add students, courses and courses to students with the GUI at `localhost:8080`
 
 ## All data will be saved in project root in `logs` folder as `students.json` & `courses.json` files.
