@@ -92,7 +92,7 @@ public class ManagerFileService {
 
         try (FileReader reader = new FileReader(filename))
         {
-            //Read JSON file
+            //Read JSON file and return the content as JSONArray
             Object obj = jsonParser.parse(reader);
             JSONTokener tokener = new JSONTokener(obj.toString());
             return new JSONArray(tokener);
@@ -105,6 +105,7 @@ public class ManagerFileService {
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
+        // If filename cant be read, returns an empty JSONArray
         return new JSONArray();
     }
 

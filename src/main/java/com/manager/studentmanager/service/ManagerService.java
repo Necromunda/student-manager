@@ -51,7 +51,9 @@ public class ManagerService {
     }
 
     // Function to add a course to a student using student ID and course ID
-    public void addCourseToStudent(int p_student_id, int p_course_id) {
+    public Boolean addCourseToStudent(int p_student_id, int p_course_id) {
+        boolean flag = false;
+
         // Get students and courses from the .json files
         List<Student> m_students = getStudents();
         List<Course> m_courses = getCourses();
@@ -62,6 +64,7 @@ public class ManagerService {
             if (iterS.getStudent_id() == p_student_id) {
                 for (Course iterC : m_courses) {
                     if (iterC.getCourse_id() == p_course_id) {
+                        flag = true;
                         iterS.setStudent_courses(iterC);
                         System.out.println("Course added!");
                         mFileService.writeFileCourseToStudent(iterS.getStudent_id(), iterC);
@@ -69,5 +72,6 @@ public class ManagerService {
                 }
             }
         }
+        return flag;
     }
 }

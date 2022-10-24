@@ -27,22 +27,28 @@ public class ManagerRestController {
     }
 
     @PostMapping("/student")
-    public void managerAddStudent(@RequestParam String fname,
+    public String managerAddStudent(@RequestParam String fname,
                                     @RequestParam String lname,
                                     @RequestParam int grade){
         mService.addStudents(new Student(fname, lname, grade));
+        return "Student added";
     }
 
     @PostMapping("/course")
-    public void managerAddStudent(@RequestParam String course_name,
+    public String managerAddStudent(@RequestParam String course_name,
                                     @RequestParam String course_teacher_name,
                                     @RequestParam String course_class){
         mService.addCourses(new Course(course_name, course_teacher_name, course_class));
+        return "Course added";
     }
 
     @PostMapping("/courseToStudent")
-    public void managerAddCourseToStudent(@RequestParam int student_id,
+    public String managerAddCourseToStudent(@RequestParam int student_id,
                                           @RequestParam int course_id) {
-        mService.addCourseToStudent(student_id, course_id);
+        boolean added = mService.addCourseToStudent(student_id, course_id);
+        if (added)
+            return "Course added to student";
+        else
+            return "Course could not be added to student. Check your student & course IDs.";
     }
 }
